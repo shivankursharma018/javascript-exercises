@@ -1,21 +1,17 @@
-const sumAll = function(n1, n2) {
+const sumAll = function(low, high) {
     let sum = 0;
-
-    if (n1 < n2) {
-        for (let i=n1; i<=n2; i++) {
-            sum += i;
-        }
-        return sum;
-    }
-    else if (n1 > n2) {
-        for (let j=n2; j<=n1; j++) {
-            sum += j;
-        }
-        return sum;
-    }
-    else {
+    if (!Number.isInteger(low) || !Number.isInteger(high))
         return "ERROR";
+    if (low < 0 || high < 0)
+        return "ERROR";
+    if (low > high) {
+        const tmp = low;
+        low = high;
+        high = tmp;
     }
+    for (let i=low; i<=high; i++)
+        sum += i;
+    return sum;
 };
 
 // Do not edit below this line
